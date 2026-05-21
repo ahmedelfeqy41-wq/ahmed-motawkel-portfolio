@@ -43,6 +43,7 @@ const projects = [
       'نظام متكامل لإدارة تأجير وبيع الفساتين، المخزون، الفواتير، المصروفات، الموردين، العملاء، والتقارير.',
     tech: ['Flutter', 'SQLite', 'MySQL', 'Node.js', 'Express', 'PDF Reports'],
     images: attelehImages,
+    liveDemo: 'https://atteleh-demo.vercel.app/',
     icon: Layers,
   },
   {
