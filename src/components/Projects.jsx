@@ -128,7 +128,7 @@ export default function Projects() {
           {projects.map((project, index) => {
             const Icon = project.icon
             const image = project.images[0] || null
-            const galleryPreview = project.images.slice(0, 4)
+            const galleryPreview = project.images
 
             return (
               <motion.article className="project-card" key={project.name} variants={fadeUp}>
@@ -153,7 +153,7 @@ export default function Projects() {
                 </div>
 
                 {galleryPreview.length > 1 && (
-                  <div className="project-gallery" aria-label={`${project.name} gallery preview`}>
+                  <div className="project-gallery project-gallery-scroll" aria-label={`${project.name} gallery preview`}>
                     {galleryPreview.map((preview, previewIndex) => (
                       <button
                         type="button"
