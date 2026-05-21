@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Brain, Bug, Layers, Rocket, ShieldCheck, Sparkles } from 'lucide-react'
 
 const meFolderImages = Object.values(
@@ -15,6 +16,16 @@ const meRootImages = Object.values(
 )
 
 const personalImage = meFolderImages[0] || meRootImages[0] || null
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+}
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+}
 
 const papyrusCards = [
   {
@@ -45,63 +56,83 @@ export default function About() {
   return (
     <section id="about" className="section-block about-section">
       <div className="content-wrap">
-        <p className="section-kicker">نبذة</p>
-        <h2 className="section-title">أبني تجارب رقمية عملية واحترافية</h2>
-        <span className="section-rule" />
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
+          <p className="section-kicker">نبذة</p>
+          <h2 className="section-title">أبني تجارب رقمية عملية واحترافية</h2>
+          <span className="section-rule" />
+        </motion.div>
 
         <div className="about-layout">
-          <aside className="about-portrait-card">
+          <motion.aside
+            className="about-portrait-card"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+          >
             <div className="about-image-frame">
               {personalImage ? (
-                <img src={personalImage} alt="Ahmed Motawkel" />
+                <img src={personalImage} alt="Ahmed Motawkel" loading="lazy" />
               ) : (
                 <div className="portrait-placeholder">AM</div>
               )}
             </div>
             <div>
               <h3>Ahmed Motawkel</h3>
-              <p>Full Stack & Desktop App Developer</p>
+              <p>IT Manager & Full Stack Developer</p>
             </div>
-          </aside>
+          </motion.aside>
 
           <div className="about-copy">
-            <p>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
               أنا مطور برمجيات أركز على بناء أنظمة أعمال حقيقية: ERP، POS، تطبيقات سطح
               المكتب، لوحات التحكم، التقارير، وإدارة البيانات بشكل واضح وآمن.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
               هدفي أن يكون المنتج سريعًا، مفهومًا، وسهل التشغيل داخل بيئة العمل اليومية،
               مع اهتمام خاص بتفاصيل الفواتير، الصلاحيات، البحث، التصدير، وتجربة العميل.
-            </p>
+            </motion.p>
 
-            <div className="papyrus-grid">
+            <motion.div
+              className="papyrus-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {papyrusCards.map((card) => {
                 const Icon = card.icon
 
                 return (
-                  <article className="papyrus-card" key={card.title}>
+                  <motion.article className="papyrus-card" key={card.title} variants={fadeUp}>
                     <Icon size={28} />
                     <h3>{card.title}</h3>
                     <p>{card.text}</p>
-                  </article>
+                  </motion.article>
                 )
               })}
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        <div className="strength-grid">
+        <motion.div
+          className="strength-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {strengths.map((item) => {
             const Icon = item.icon
 
             return (
-              <div className="strength-card" key={item.title}>
+              <motion.div className="strength-card" key={item.title} variants={fadeUp}>
                 <span>{item.title}</span>
                 <Icon size={30} />
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         <div className="about-note">
           <Sparkles size={20} />

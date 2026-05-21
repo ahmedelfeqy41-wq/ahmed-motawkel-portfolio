@@ -1,4 +1,15 @@
+import { motion } from 'framer-motion'
 import { Brain, Code2, Database, GitBranch, Layers, ShieldCheck, Sparkles } from 'lucide-react'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+}
 
 const sections = [
   {
@@ -27,34 +38,48 @@ export default function Skills() {
   return (
     <section id="skills" className="section-block skills-section pharaoh-pattern">
       <div className="content-wrap">
-        <p className="section-kicker centered">المهارات</p>
-        <h2 className="section-title centered">تقنيات أستخدمها لبناء أنظمة مستقرة</h2>
-        <span className="section-rule centered-rule" />
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
+          <p className="section-kicker centered">المهارات</p>
+          <h2 className="section-title centered">تقنيات أستخدمها لبناء أنظمة مستقرة</h2>
+          <span className="section-rule centered-rule" />
+        </motion.div>
 
         <div className="skill-sections">
           {sections.map((section) => {
             const Icon = section.icon
 
             return (
-              <article key={section.title} className="skill-group">
+              <motion.article
+                key={section.title}
+                className="skill-group"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.16 }}
+              >
                 <div className="skill-group-head">
                   <Icon size={30} />
                   <h3>{section.title}</h3>
                 </div>
 
-                <div className="skill-grid">
+                <motion.div className="skill-grid" variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true }}>
                   {section.skills.map((skill) => (
-                    <div className="skill-card" key={skill}>
+                    <motion.div
+                      className="skill-card"
+                      key={skill}
+                      variants={fadeUp}
+                      whileHover={{ y: -8, scale: 1.015 }}
+                    >
                       <span className="gold-ornament" aria-hidden="true">
-                        ◆
+                        𓋹
                       </span>
                       <Sparkles size={24} />
                       <h4>{skill}</h4>
                       <p>Professional workflow</p>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
-              </article>
+                </motion.div>
+              </motion.article>
             )
           })}
         </div>

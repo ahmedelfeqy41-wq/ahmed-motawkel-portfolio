@@ -1,4 +1,10 @@
+import { motion } from 'framer-motion'
 import { GitBranch, Globe, Mail, Phone, Sparkles } from 'lucide-react'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
 
 const contacts = [
   {
@@ -37,15 +43,17 @@ export default function Contact() {
   return (
     <section id="contact" className="section-block contact-section pharaoh-pattern">
       <div className="content-wrap">
-        <p className="section-kicker centered">تواصل</p>
-        <h2 className="section-title centered">جاهز لبناء نظامك القادم</h2>
-        <span className="section-rule centered-rule" />
-        <p className="section-lead">
-          سواء كان المطلوب موقعًا احترافيًا، نظام ERP، تطبيق سطح مكتب، أو لوحة تحكم
-          تشغيلية، يمكننا تحويل الفكرة إلى منتج واضح وقابل للاستخدام.
-        </p>
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
+          <p className="section-kicker centered">تواصل</p>
+          <h2 className="section-title centered">جاهز لبناء نظامك القادم</h2>
+          <span className="section-rule centered-rule" />
+          <p className="section-lead">
+            سواء كان المطلوب موقعًا احترافيًا، نظام ERP، تطبيق سطح مكتب، أو لوحة تحكم
+            تشغيلية، يمكننا تحويل الفكرة إلى منتج واضح وقابل للاستخدام.
+          </p>
+        </motion.div>
 
-        <div className="contact-panel">
+        <motion.div className="contact-panel" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
           <div className="contact-headline">
             <Sparkles size={30} />
             <div>
@@ -59,15 +67,15 @@ export default function Contact() {
               const Icon = item.icon
 
               return (
-                <a className="contact-card" href={item.href} key={item.label}>
+                <motion.a className="contact-card" href={item.href} key={item.label} whileHover={{ y: -7 }}>
                   <Icon size={30} />
                   <strong>{item.label}</strong>
                   <span>{item.value}</span>
-                </a>
+                </motion.a>
               )
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

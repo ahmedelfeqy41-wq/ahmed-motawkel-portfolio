@@ -1204,3 +1204,342 @@
     padding: 18px;
   }
 }
+
+.desktop-nav a {
+  position: relative;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  inset: auto 16px 7px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 220ms ease;
+}
+
+.desktop-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-section::before,
+.section-block::before {
+  content: "𓂀 𓆣 𓋹 𓃭 𓄿 𓂀 𓆣 𓋹 𓃭 𓄿";
+}
+
+.section-title {
+  position: relative;
+  padding-inline: clamp(18px, 3vw, 42px);
+}
+
+.section-title::before,
+.section-title::after {
+  content: "𓂀";
+  position: absolute;
+  top: 50%;
+  color: rgba(201, 154, 61, 0.58);
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  transform: translateY(-50%);
+}
+
+.section-title::before {
+  right: 0;
+}
+
+.section-title::after {
+  left: 0;
+}
+
+.portrait-ornament::before,
+.portrait-ornament::after {
+  content: "𓄿𓎛𓅓𓂧";
+}
+
+.papyrus-card::after,
+.skill-card::after,
+.contact-card::after {
+  content: "𓋹";
+}
+
+.project-content::before {
+  content: "𓄿𓎛𓅓𓂧";
+}
+
+.skill-card {
+  isolation: isolate;
+}
+
+.skill-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card:hover {
+  border-color: rgba(201, 154, 61, 0.72);
+  box-shadow: 0 22px 54px rgba(201, 154, 61, 0.18), 0 18px 46px rgba(7, 24, 43, 0.1);
+}
+
+.project-image-button {
+  width: 100%;
+  min-height: 288px;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-gallery button {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(201, 154, 61, 0.26);
+  border-radius: 14px;
+  background: rgba(255, 248, 232, 0.08);
+  cursor: pointer;
+}
+
+.project-gallery button img {
+  border: 0;
+  border-radius: 0;
+  display: block;
+  transition: transform 180ms ease;
+}
+
+.project-gallery button:hover img {
+  transform: scale(1.08);
+}
+
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 32px);
+  background: rgba(7, 24, 43, 0.78);
+  backdrop-filter: blur(14px);
+}
+
+.floating-glyph {
+  position: absolute;
+  z-index: 0;
+  color: rgba(201, 154, 61, 0.2);
+  font-size: clamp(2.8rem, 6vw, 7rem);
+  pointer-events: none;
+  animation: glyphFloat 7s ease-in-out infinite;
+}
+
+.glyph-one {
+  top: 18%;
+  right: 10%;
+}
+
+.glyph-two {
+  bottom: 18%;
+  left: 9%;
+  animation-delay: -2s;
+}
+
+.glyph-three {
+  top: 40%;
+  left: 18%;
+  animation-delay: -4s;
+}
+
+.stone-tablet {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 232, 0.08), transparent 36%),
+    linear-gradient(180deg, #10233a, #07182b);
+}
+
+@keyframes glyphFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-16px) scale(1.035);
+  }
+}
+
+.lightbox-scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.lightbox-panel {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  max-height: min(90vh, 920px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border: 1px solid rgba(201, 154, 61, 0.56);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(201, 154, 61, 0.12), transparent 42%),
+    var(--navy);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+}
+
+.lightbox-header {
+  min-height: 82px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(201, 154, 61, 0.28);
+  color: var(--cream);
+}
+
+.lightbox-header span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--gold);
+  letter-spacing: 8px;
+}
+
+.lightbox-header h3 {
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.lightbox-icon-button,
+.lightbox-nav {
+  width: 46px;
+  height: 46px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(201, 154, 61, 0.42);
+  border-radius: 999px;
+  background: rgba(255, 248, 232, 0.08);
+  color: var(--cream);
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.lightbox-icon-button:hover,
+.lightbox-nav:hover {
+  transform: translateY(-2px);
+  background: rgba(201, 154, 61, 0.18);
+}
+
+.lightbox-stage {
+  position: relative;
+  min-height: 54vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 28px);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(29, 154, 159, 0.18), transparent 18rem),
+    #061321;
+}
+
+.lightbox-stage img {
+  max-width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+}
+
+.lightbox-empty {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 4rem;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav.prev {
+  right: 18px;
+}
+
+.lightbox-nav.next {
+  left: 18px;
+}
+
+.lightbox-count {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  padding: 8px 13px;
+  border: 1px solid rgba(201, 154, 61, 0.36);
+  border-radius: 999px;
+  background: rgba(7, 24, 43, 0.72);
+  color: var(--cream);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lightbox-thumbs {
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(201, 154, 61, 0.26);
+}
+
+.lightbox-thumbs button {
+  flex: 0 0 92px;
+  height: 66px;
+  padding: 3px;
+  border: 1px solid rgba(201, 154, 61, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 248, 232, 0.08);
+  cursor: pointer;
+}
+
+.lightbox-thumbs button.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(201, 154, 61, 0.18);
+}
+
+.lightbox-thumbs img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+@media (max-width: 720px) {
+  .lightbox-panel {
+    max-height: 92vh;
+    border-radius: 22px;
+  }
+
+  .lightbox-stage {
+    min-height: 48vh;
+  }
+
+  .lightbox-stage img {
+    max-height: 54vh;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lightbox-thumbs button {
+    flex-basis: 76px;
+    height: 58px;
+  }
+}
