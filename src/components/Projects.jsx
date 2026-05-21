@@ -194,8 +194,6 @@ export default function Projects() {
                     <motion.a
                       href={project.liveDemo || '#contact'}
                       className="primary-button small-button"
-                      target={project.liveDemo ? '_blank' : undefined}
-                      rel={project.liveDemo ? 'noreferrer' : undefined}
                       whileHover={{ y: -3 }}
                     >
                       Live Demo
