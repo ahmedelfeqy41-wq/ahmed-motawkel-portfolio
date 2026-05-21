@@ -34,6 +34,7 @@ const projects = [
       'موقع إلكتروني احترافي لشركة Victoria Dairy يعرض الهوية التجارية والخدمات والمنتجات بشكل منظم وجذاب.',
     tech: ['WordPress', 'Web Design', 'UI/UX', 'Hosting', 'SSL'],
     images: victoriaImages,
+    liveDemo: 'https://www.victoria-dairy.com/',
     icon: Globe,
   },
   {
@@ -190,7 +191,13 @@ export default function Projects() {
                         <Images size={17} />
                       </motion.button>
                     )}
-                    <motion.a href="#contact" className="primary-button small-button" whileHover={{ y: -3 }}>
+                    <motion.a
+                      href={project.liveDemo || '#contact'}
+                      className="primary-button small-button"
+                      target={project.liveDemo ? '_blank' : undefined}
+                      rel={project.liveDemo ? 'noreferrer' : undefined}
+                      whileHover={{ y: -3 }}
+                    >
                       Live Demo
                       <ExternalLink size={17} />
                     </motion.a>
